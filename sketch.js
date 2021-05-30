@@ -11,7 +11,7 @@ var bird, slingshot;
 var gameState = "onSling";
 
 function preload() {
-    backgroundImg = loadImage("sprites/bg.png");
+   getbgImg()
 }
 
 function setup(){
@@ -45,6 +45,7 @@ function setup(){
 }
 
 function draw(){
+    if(backgroundImg)
     background(backgroundImg);
     Engine.update(engine);
     //strokeWeight(4);
@@ -85,4 +86,16 @@ function keyPressed(){
     if(keyCode === 32){
        // slingshot.attach(bird.body);
     }
+}
+
+
+async function getbgImg(){
+
+var response = await fetch("http://worldtimeapi.org/api/timezone/Asia/kolkata")
+var responseJson = await response.json()
+var datetime = responseJson.datetime;
+var time = datetime.slice(11,13)
+
+
+
 }
